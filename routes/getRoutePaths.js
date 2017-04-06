@@ -8,25 +8,21 @@ var url = 'mongodb://54.245.218.192:27017/VTADailyTrips';
 var MongoClient = require('mongodb').MongoClient;
 var db;
 
-
-
 MongoClient.connect(turl, function (err, database) {
-    if (err) return console.error(err);
+    if (err) return err;
     else
         db = database;
-        console.log('connected to VTADailyTrips');// the Mongo driver recommends starting the server here because most apps *should* fail to start if they have no DB.  If yours is the exception, move the server startup elsewhere.
 });
 
 
 router.post('/', function (req, res, next) {
-    console.log(req.body);
 
     db.collection('busPaths').find({ 'shapeid': { $in: req.body.data } }).toArray(function (errTrips, Tripdocuments) {
        res.send(Tripdocuments);
-        //console.log(Tripdocuments);
 
     });
 });
 
 module.exports = router;
-console.log("RoutePaths server is listening");
+console.log("RoutePaths server started");
+

@@ -14,7 +14,8 @@
     "express": "~4.14.1",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.2",
-    "cors": "2.8.3"
+    "cors": "2.8.3",
+    "async":"2.3.0"
   },
   "main": "app.js",
   "devDependencies": {},
