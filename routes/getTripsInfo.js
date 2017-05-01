@@ -4,8 +4,7 @@ var mongodb = require('mongodb');
 var bodyParser = require('body-parser');
 var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
-var turl = 'mongodb://localhost:27017/VTADailyTrips';
-var url = 'mongodb://54.245.218.192:27017/VTADailyTrips';
+var url = 'mongodb://54.70.39.32:27017/VTADailyTrips';
 
 var db;
 
@@ -15,7 +14,7 @@ function trips() {
 }
 
 
-MongoClient.connect(turl, function (err, database) {
+MongoClient.connect(url, function (err, database) {
     if (err) return console.error(err);
     db = database;
 });
@@ -48,4 +47,4 @@ router.post("/", function (req, res, next) {
 });
 
 module.exports = router;
-console.log("TripsInfo Server Started");
+
