@@ -2,7 +2,7 @@ var MongoClient = require('mongodb').MongoClient;
 var assert = require('assert');
 var moment = require('moment');
 var ObjectId = require('mongodb').ObjectID;
-var url = 'mongodb://54.70.39.32:27017/VTADailyTrips';
+var url = 'mongodb://localhost:27017/VTADailyTrips';
 var express = require('express');
 var router = express.Router();
 var date = require('date-and-time');
@@ -150,12 +150,13 @@ function buildUserResponse(userLoc, callback1) {
             },
             {
                 $sort: { 'stop_seq.Eta1': 1 , 'tripid': 1}
-            },
-            {
-                $group : { _id : '$routeid', tripid: { $first: '$tripid' } }
-            }], function(err, trips) {
-                    if(err) callback(err); 
-                    else return callback(trips);
+            }
+
+            ], function(err, trips) {
+                    if(err) callback(err);
+
+                    else {return callback(trips);
+                            console.log(trips);}
             });
         };
 
@@ -170,3 +171,6 @@ function buildUserResponse(userLoc, callback1) {
       
 }
 module.exports = router;
+
+
+

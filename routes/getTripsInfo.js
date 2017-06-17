@@ -4,7 +4,7 @@ var mongodb = require('mongodb');
 var bodyParser = require('body-parser');
 var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://54.70.39.32:27017/VTADailyTrips';
+var url = 'mongodb://localhost:27017/VTADailyTrips';
 
 var db;
 
